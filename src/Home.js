@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Container, Row, Col } from 'react-grid-system';
 
 export const Home = () => 
     (
@@ -18,5 +19,21 @@ export const Home = () =>
             <p>Lose john poor same it case do year we. Full how way even the sigh. Extremely nor furniture fat questions now provision incommode preserved. Our side fail find like now. Discovered travelling for insensible partiality unpleasing impossible she. Sudden up my excuse to suffer ladies though or. Bachelor possible marianne directly confined relation as on he.</p>
 
             <p>Promotion an ourselves up otherwise my. High what each snug rich far yet easy. In companions inhabiting mr principles at insensible do. Heard their sex hoped enjoy vexed child for. Prosperous so occasional assistance it discovered especially no. Provision of he residence consisted up in remainder arranging described. Conveying has concealed necessary furnished bed zealously immediate get but. Terminated as middletons or by instrument. Bred do four so your felt with. No shameless principle dependent household do.</p>
+            
+            <Container className="mt-5 mb-5">
+                <Row>
+                    <Col sm={4} className="text-center">
+                        One of three columns
+                    </Col>
+                    <Col sm={4} className="text-center">
+                        One of three columns
+                    </Col>
+                    <Col sm={4} className="text-center">
+                        One of three columns
+                    </Col>
+                </Row>
+            </Container>
+
         </div>
+
     )
