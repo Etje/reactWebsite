@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {BootstrapTable, TableHeaderColumn} from 'react-bootstrap-table';
 
 class View extends Component {
 
@@ -9,7 +10,7 @@ class View extends Component {
         productPrice: 20
       }
     };
-  
+
     componentDidMount() {
       this.getProducts();
     }
@@ -35,9 +36,11 @@ class View extends Component {
     render() {
       const { products } = this.state;
         return (
-          <div className="App text-center">
-            {products.map(this.renderProduct)}
-          </div>
+            <BootstrapTable striped hover condensed ref='table' keyField='productID' data={ products }>
+              <TableHeaderColumn dataField='productID' hidden={true} >ProductID</TableHeaderColumn>
+              <TableHeaderColumn dataField='productName' dataAlign='center'>Product naam</TableHeaderColumn>
+              <TableHeaderColumn dataField='productPrice' dataAlign='center'>Product prijs (€)</TableHeaderColumn>
+            </BootstrapTable>
         );
     }
 }

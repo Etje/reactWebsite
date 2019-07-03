@@ -26,7 +26,7 @@ class View extends Component {
             <div>
                 <input value={product.productName} onChange={e => this.setState({ product: { ...product, productName: e.target.value} })}/>
                 <input value={product.productPrice}  onChange={e => this.setState({ product: { ...product, productPrice: e.target.value} })}/>
-                <button onClick={this.addProduct}>Add Product</button>
+                <button className="btn btn-primary" onClick={this.addProduct}>Add Product</button>
             </div>
         );
     }
