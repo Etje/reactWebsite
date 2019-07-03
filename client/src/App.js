@@ -9,6 +9,7 @@ import { NoMatch } from './NoMatch';
 import { Layout } from './components/Layout';
 import { NavigationBar } from './components/NavigationBar';
 import { Jumbotron } from './components/Jumbotron';
+import { Footer } from './components/Footer';
 
 
 class App extends Component {
@@ -30,6 +31,7 @@ class App extends Component {
             </Switch>
           </Router>
         </Layout>
+        <Footer className="footer" />
       </React.Fragment>
     );
   }

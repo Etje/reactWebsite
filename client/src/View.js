@@ -36,7 +36,7 @@ class View extends Component {
     render() {
       const { products } = this.state;
         return (
-            <BootstrapTable striped hover condensed ref='table' keyField='productID' data={ products }>
+            <BootstrapTable striped hover condensed ref='table' keyField='productID' data={ products } className="m-5">
               <TableHeaderColumn dataField='productID' hidden={true} >ProductID</TableHeaderColumn>
               <TableHeaderColumn dataField='productName' dataAlign='center'>Product naam</TableHeaderColumn>
               <TableHeaderColumn dataField='productPrice' dataAlign='center'>Product prijs (€)</TableHeaderColumn>
