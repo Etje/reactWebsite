@@ -25,32 +25,67 @@ const connection = mysql.createConnection({
     database: "react"
 });
 
-connection.connect(function(err) {
-    (err) ? console.log(err) : console.log("Database successfully connected");
+connection.connect(err => {
+    if(err) {
+        return err;
+    } 
 });
 
-app.get('/', (req, res) => {
-    res.send('Hello World from the product server. <br /> Go to /products to see all the products')
+// console.log(connection);
+
+app.get('/', function(req, res) {
+    res.send('go to /products to see all products in database');
 });
 
 app.get('/products', function(req, res) {
-    connection.query(SELECT_ALL_PRODUCTS, function(error, result) {
+    connection.query(SELECT_ALL_PRODUCTS, function(error, results) {
         if(error){
-            throw error;
+            return res.send(err)
         } else {
-            res.send(result);
+            return res.json({
+                data: results
+            });
         }
     });
 });
 
 app.get('/products/add', (req, res) => {
     const { name, price } = req.query;
-    const INSERT_PRODUCTS_QUERY = `INSERT INTO ` + process.env.TABLE + ` (` + process.env.COLUMN1 + `, ` + process.env.COLUMN2 + `) VALUES('${name}', '${price}')`;
+    const INSERT_PRODUCTS_QUERY = `INSERT INTO products (productName, productPrice) VALUES('${name}', '${price}')`;
     connection.query(INSERT_PRODUCTS_QUERY, (err, result) => {
         if(err){
             return res.send(err);
         } else {
             return res.send('successfully added the product');
+        }
+    });
+});
+
+app.get('/create', (req, res) => {
+    const CREATE_DATABASE = `CREATE DATABASE react`;
+
+    connection.query(CREATE_DATABASE, (err, result) => {
+        if(err){
+            res.send(err); 
+        } else {
+            console.log('Database successfully created');
+        }
+    });
+
+});
+
+app.get('/create/table', (req, res) => {
+    const CREATE_TABLE = `CREATE TABLE products 
+    (productID int AUTO_INCREMENT, 
+    productName VARCHAR(255), 
+    productPrice VARCHAR(255), 
+    PRIMARY KEY(productID))`;
+    
+    connection.query(CREATE_TABLE, (err, result) => {
+        if(err){
+            res.send(err); 
+        } else {
+            console.log('Table successfully created');
         }
     });
 });

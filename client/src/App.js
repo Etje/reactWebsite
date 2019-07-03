@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import View from './View';
 import Create from './Create';
 import { Home } from './Home';
 import { Contact } from './Contact';
@@ -13,7 +14,7 @@ import { Jumbotron } from './components/Jumbotron';
 class App extends Component {
 
   render () {
-    return (    
+    return (   
       <React.Fragment>
         <NavigationBar />
         <Jumbotron />
@@ -21,6 +22,7 @@ class App extends Component {
           <Router>
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/view" component={View} />
               <Route exact path="/create" component={Create} />
               <Route exact path="/about" component={About} />
               <Route exact path="/contact" component={Contact} />

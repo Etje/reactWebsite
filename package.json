@@ -1,0 +1,23 @@
+{
+  "name": "my-react-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"cd backend && node server.js\" \"cd client && npm start\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Etje/reactWebsite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Etje/reactWebsite/issues"
+  },
+  "homepage": "https://github.com/Etje/reactWebsite#readme",
+  "dependencies": {
+    "concurrently": "^4.1.1"
+  }
+}

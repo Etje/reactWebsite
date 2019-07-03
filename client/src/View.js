@@ -3,11 +3,23 @@ import React, { Component } from 'react';
 class View extends Component {
 
   state = {
+      products: [],
       product: {
         productName: 'Sample product',
         productPrice: 20
       }
     };
+  
+    componentDidMount() {
+      this.getProducts();
+    }
+
+    getProducts = _ => {
+      fetch(`http://localhost:3001/products`)
+      .then(response => response.json())
+      .then(response => this.setState({ products: response.data }))
+      .catch(err => {console.error(err)})
+    }
 
     addProduct = _ => {
       const { product } = this.state; 
@@ -21,13 +33,11 @@ class View extends Component {
     renderProduct = ({productID, productName, productPrice}) => <div key={productID}>{productName} ' - ' {productPrice},- </div>
 
     render() {
-      const { product } = this.state;
+      const { products } = this.state;
         return (
-            <div>
-                <input value={product.productName} onChange={e => this.setState({ product: { ...product, productName: e.target.value} })}/>
-                <input value={product.productPrice}  onChange={e => this.setState({ product: { ...product, productPrice: e.target.value} })}/>
-                <button onClick={this.addProduct}>Add Product</button>
-            </div>
+          <div className="App text-center">
+            {products.map(this.renderProduct)}
+          </div>
         );
     }
 }
